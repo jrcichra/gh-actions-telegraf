@@ -12,7 +12,7 @@ if [ -f "gh-actions-telegraf/telegraf.conf" ];then
     # Run a copy of telegraf and point it to that config
     docker run --name=telegraf --hostname=$(hostname) --volume=/etc:/rootfs/etc:ro --volume=/proc:/host/proc:ro --volume=/var/run/docker.sock:/var/run/docker.sock:ro --volume=${PWD}/gh-actions-telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro --volume=/sys:/rootfs/sys:ro --volume=/proc:/rootfs/proc:ro --network=host --privileged --restart=always --detach=true -t telegraf telegraf
     ## Show the logs to see if it was successful in connecting
-    sleep 5
+    sleep 25
     docker logs telegraf
 else
     echo "Could not find telegraf config file at gh-actions-telegraf/telegraf.conf"
