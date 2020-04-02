@@ -8,7 +8,7 @@ if [ -f "gh-actions-telegraf/telegraf.conf" ];then
     # Modify that config in place to put in the username and password for influx
     sed -i "s/###GITHUBACTIONSAUTH###/  username=\"${INFLUX_USERNAME}\"\n  password=\"${INFLUX_PASSWORD}\"/" "gh-actions-telegraf/telegraf.conf"
     # Do the same for the url
-    sed -i "s/###GITHUBACTIONSURL###/  urls = [\"${INFLUX_URL}\"]/" "gh-actions-telegraf/telegraf.conf"
+    sed -i "s@###GITHUBACTIONSURL###@  urls = [\"${INFLUX_URL}\"]@" "gh-actions-telegraf/telegraf.conf"
     # Print out the config for debugging
     cat "gh-actions-telegraf/telegraf.conf"
     # Run a copy of telegraf and point it to that config
