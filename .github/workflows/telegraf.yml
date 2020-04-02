@@ -1,0 +1,19 @@
+name: CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Start telegraf collection on linux
+      run: |
+          git clone https://github.com/jrcichra/gh-actions-telegraf
+          bash gh-actions-telegraf/telegraf.sh
+      env:
+          INFLUX_URL: ${{ secrets.INFLUX_URL }}
+          INFLUX_USERNAME: ${{ secrets.INFLUX_USERNAME }}
+          INFLUX_PASSWORD: ${{ secrets.INFLUX_PASSWORD }}
