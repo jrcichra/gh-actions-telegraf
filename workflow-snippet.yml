@@ -1,0 +1,8 @@
+- name: Start telegraf collection on linux
+    run: |
+        git clone https://github.com/jrcichra/gh-actions-telegraf
+        bash gh-actions-telegraf/telegraf.sh
+    env:
+        INFLUX_URL: ${{ secrets.INFLUX_URL }}
+        INFLUX_USERNAME: ${{ secrets.INFLUX_USERNAME }}
+        INFLUX_PASSWORD: ${{ secrets.INFLUX_PASSWORD }}
