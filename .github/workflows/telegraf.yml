@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v5
     - name: Start telegraf collection on linux
       run: |
           git clone https://github.com/jrcichra/gh-actions-telegraf
